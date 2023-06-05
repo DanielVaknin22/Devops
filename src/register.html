@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register</title>
+  <link rel="stylesheet" type="text/css" href="./register.css">
+</head>
+<body>
+  <div class="register-container">
+    <h2>Register</h2>
+    <form id="registerForm">
+      <input type="text" id="name" name="name" placeholder="Name" required class="text-input">
+
+      <input type="number" id="grade1" name="grade1" placeholder="Grade 1" required min="0" max="100" class="text-input">
+
+      <input type="number" id="grade2" name="grade2" placeholder="Grade 2" required min="0" max="100" class="text-input">
+
+      <input type="number" id="grade3" name="grade3" placeholder="Grade 3" required min="0" max="100" class="text-input">
+
+      <button type="submit" class="registerbutten"><strong>Register</strong></button>
+      <button type="button" class="showStudentsButton" id="showStudentsButton"><strong>Show Students</strong></button>
+      <div id="studentList"></div>
+    </form>
+  </div>
+</body>
+  <script>
+    document.getElementById('registerForm').addEventListener('submit', handleSubmit);
+
+    async function handleSubmit(event) {
+      event.preventDefault();
+
+      const name = document.getElementById('name').value;
+      const grade1 = Number(document.getElementById('grade1').value);
+      const grade2 = Number(document.getElementById('grade2').value);
+      const grade3 = Number(document.getElementById('grade3').value);
+
+      if (grade1 < 0 || grade1 > 100 || grade2 < 0 || grade2 > 100 || grade3 < 0 || grade3 > 100) {
+        alert('Please enter valid grades between 0 and 100.');
+        return;
+      }
+
+      try {
+        const response = await fetch('/register', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+          },
+          body: new URLSearchParams({
+            name,
+            grade1,
+            grade2,
+            grade3,
+          }),
+        });
+
+        if (response.ok) {
+          console.log('Student registered successfully!');
+          alert('Student registered successfully!');
+          document.getElementById('registerForm').reset();
+        } else {
+          console.error('Error occurred while saving student data.');
+          alert('Error occurred while saving student data.');
+        }
+      } catch (error) {
+        console.error(error);
+        alert('Error occurred while saving student data.');
+      }
+    }
+
+    let isStudentListVisible = false;
+
+    document.getElementById('showStudentsButton').addEventListener('click', toggleStudentList);
+
+    async function toggleStudentList() {
+      if (isStudentListVisible) {
+        hideStudentList();
+      } else {
+        await showStudentList();
+      }
+    }
+
+    async function showStudentList() {
+      try {
+        const response = await fetch('/students');
+
+        if (response.ok) {
+          const students = await response.json();
+          console.log('Students:', students);
+          displayStudents(students);
+          document.getElementById('showStudentsButton').textContent = 'Hide Students';
+          isStudentListVisible = true;
+        } else {
+          console.error('Error occurred while fetching students data.');
+          alert('Error occurred while fetching students data.');
+        }
+      } catch (error) {
+        console.error(error);
+        alert('Error occurred while fetching students data.');
+      }
+    }
+
+    function hideStudentList() {
+      const studentListContainer = document.getElementById('studentList');
+      studentListContainer.innerHTML = '';
+      document.getElementById('showStudentsButton').textContent = 'Show Students';
+      isStudentListVisible = false;
+    }
+
+    function displayStudents(students) {
+  const studentListContainer = document.getElementById('studentList');
+  studentListContainer.innerHTML = '';
+
+  students.forEach(student => {
+    const studentElement = document.createElement('div');
+    studentElement.classList.add('student-item');
+    studentElement.innerHTML = `
+      <p><span>Name:</span> ${student.name}</p>
+      <p><span>Grade 1:</span> ${student.grade1}</p>
+      <p><span>Grade 2:</span> ${student.grade2}</p>
+      <p><span>Grade 3:</span> ${student.grade3}</p>
+    `;
+    studentListContainer.appendChild(studentElement);
+  });
+    }
+  </script>
+</body>
+</html>
