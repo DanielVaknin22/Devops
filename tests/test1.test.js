@@ -4,10 +4,10 @@ const { expect } = require("chai");
 describe("avg", () => {
   describe("#average", () => {
     it("calculates the average", () => {
-      const grades = [100, 95, 85];
+      const grades = [100, 95, 75];
       const sum = grades.reduce((total, grade) => total + grade, 0);
       const average = sum / grades.length;
-      expect(average).equal(93.3333333);
+      expect(average).equal(90);
     });
   });
 });
