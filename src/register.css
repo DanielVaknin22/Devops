@@ -1,0 +1,111 @@
+body {
+    background-image: url('https://img.freepik.com/free-photo/pink-watercolour-textured-background-with-gold-glitter-traces_125540-2132.jpg?w=2000&t=st=1685967477~exp=1685968077~hmac=bbf0807d4c87b3a651310724577ea424ec870f0c04c0d1c525460578c0415ffa');
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+  }
+  
+  
+  .register-container {
+    width: 300px;
+    padding: 30px;
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 100px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 1);
+    margin-top: 20px; /* Add margin-top to create spacing */
+  }
+  
+  .register-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #fc8e95;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
+  }
+  /* .register-container label {
+    display: block;
+    margin-bottom: 10px;
+    color: #ff0b0b;
+  } */
+  
+  .register-container input[type="text"],
+  .register-container input[type="number"] {
+    width: 100%;
+    color: rgb(7, 7, 7);
+    background-color: rgba(255, 255, 255, 0.3);
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 100px;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    font-size: 14px;
+    box-sizing: border-box;
+  }
+  
+  .registerbutten {
+    width: 40%;
+    padding: 10px;
+    background-color: #fc8e95;
+    color: white;
+    border: none;
+    border-radius: 100px;
+    cursor: pointer;
+    font-size: 17px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    display: block;
+    margin-top: 20px;
+    /* transition: background-color 0.3s ease; */
+    margin-left: 30%;
+  }
+  
+  .showStudentsButton {
+    width: 50%;
+    padding: 10px;
+    background-color: white;
+    color: #fc8e95;
+    border: none;
+    border-radius: 100px;
+    cursor: pointer;
+    font-size: 17px;
+    display: block;
+    margin-top: 20px;
+    /* transition: background-color 0.3s ease; */
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    margin-left: 25%;
+  }
+  
+  .registerbutten:hover {
+    background-color: #fd818a;
+  }
+  
+  .showStudentsButton:hover {
+    background-color: #e2e1e2;
+  }
+  
+  #studentList {
+    margin-top: 20px;
+  }
+  
+  .student-item {
+    padding: 10px;
+    background-color :rgba(255, 255, 255, 0.3);
+    border-radius: 30px;
+    margin-bottom: 10px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    border: 1px solid black;
+
+
+  }
+  
+  .student-item p {
+    margin: 0;
+  }
+  
+  .student-item span {
+    font-weight: bold;
+  }
