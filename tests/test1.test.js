@@ -7,7 +7,7 @@ describe("avg", () => {
       const grades = [100, 95, 85];
       const sum = grades.reduce((total, grade) => total + grade, 0);
       const average = sum / grades.length;
-      expect(average).equal(90);
+      expect(average).equal(93.3333333);
     });
   });
 });
